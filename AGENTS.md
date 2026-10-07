@@ -8,3 +8,4 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+- All data access goes through src/lib/supabase.ts and names from src/lib/schema.ts; the user connects their own backend manually, so never enable Cloud.
