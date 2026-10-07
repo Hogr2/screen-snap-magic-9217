@@ -1,0 +1,11 @@
+warning: in the working copy of 'src/lib/supabase-config.ts', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/src/lib/supabase-config.ts b/src/lib/supabase-config.ts[m
+[1mindex a948b89..26d212d 100644[m
+[1m--- a/src/lib/supabase-config.ts[m
+[1m+++ b/src/lib/supabase-config.ts[m
+[36m@@ -1,2 +1,2 @@[m
+[31m-export const SUPABASE_URL = "PASTE_SUPABASE_URL_HERE";[m
+[31m-export const SUPABASE_ANON_KEY = "PASTE_SUPABASE_ANON_KEY_HERE";[m
+[32m+[m[32mexport const SUPABASE_URL = "https://cjbngkryccsksodujqvw.supabase.co";[m
+[32m+[m[32mexport const SUPABASE_ANON_KEY = "sb_publishable_OF7fXziEUBy27d4mnpaDRA_z-Up0eb7";[m
+\ No newline at end of file[m
