@@ -25,7 +25,7 @@ export function CategoriesPanel({ open, onOpenChange, categories, onChanged }: {
   const [busy, setBusy] = useState(false);
 
   async function add() {
-    if (!name.trim() || !slug.trim()) return toast.error("أدخل الاسم والرابط المختصر.");
+    if (!name.trim() || !slug.trim()) { toast.error("أدخل الاسم والرابط المختصر."); return; }
     setBusy(true);
     try {
       await createCategory({ name: name.trim(), slug: slug.trim(), sortOrder: order });

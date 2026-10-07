@@ -47,8 +47,8 @@ export function ProductForm({ open, onOpenChange, product, categories, onSaved }
   }
 
   async function submit() {
-    if (!form.name.trim()) return toast.error("أدخل اسم المنتج.");
-    if (!(form.price >= 0)) return toast.error("السعر غير صالح.");
+    if (!form.name.trim()) { toast.error("أدخل اسم المنتج."); return; }
+    if (!(form.price >= 0)) { toast.error("السعر غير صالح."); return; }
     setBusy(true);
     try {
       let imageUrl = form.imageUrl;
