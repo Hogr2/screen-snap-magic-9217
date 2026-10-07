@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Camera, ImageIcon, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -39,7 +39,7 @@ export function ProductForm({ open, onOpenChange, product, categories, onSaved }
 
   const set = <K extends keyof typeof form>(k: K, v: (typeof form)[K]) => setForm((f) => ({ ...f, [k]: v }));
 
-  async function useImage(src: Blob | HTMLCanvasElement) {
+  async function applyImage(src: Blob | HTMLCanvasElement) {
     try {
       const b = await compressImage(src);
       setBlob(b); setPreview(URL.createObjectURL(b));
@@ -105,7 +105,7 @@ export function ProductForm({ open, onOpenChange, product, categories, onSaved }
                 <Button type="button" variant="secondary" onClick={() => fileRef.current?.click()}><ImageIcon /> اختر من المعرض</Button>
               </div>
               <input ref={fileRef} type="file" accept="image/*" hidden
-                onChange={(e) => { const f = e.target.files?.[0]; if (f) useImage(f); e.target.value = ""; }} />
+                onChange={(e) => { const f = e.target.files?.[0]; if (f) applyImage(f); e.target.value = ""; }} />
             </div>
           </div>
           <div className="mt-2 flex justify-end gap-2">
@@ -114,11 +114,11 @@ export function ProductForm({ open, onOpenChange, product, categories, onSaved }
           </div>
         </DialogContent>
       </Dialog>
-      {camera && <CameraCapture onClose={() => setCamera(false)} onCapture={(c) => { setCamera(false); useImage(c); }} />}
+      {camera && <CameraCapture onClose={() => setCamera(false)} onCapture={(c) => { setCamera(false); applyImage(c); }} />}
     </>
   );
 }
 
-function F({ label, full, children }: { label: string; full?: boolean; children: React.ReactNode }) {
+function F({ label, full, children }: { label: string; full?: boolean; children: ReactNode }) {
   return <div className={`space-y-1.5 ${full ? "sm:col-span-2" : ""}`}><Label>{label}</Label>{children}</div>;
 }
